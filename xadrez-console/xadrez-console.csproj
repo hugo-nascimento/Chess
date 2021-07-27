@@ -4,8 +4,8 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>xadrez_console</RootNamespace>
-    <AssemblyVersion>1.21.7.51</AssemblyVersion>
-    <FileVersion>1.21.7.51</FileVersion>
+    <AssemblyVersion>1.21.7.52</AssemblyVersion>
+    <FileVersion>1.21.7.52</FileVersion>
   </PropertyGroup>
 
 </Project>
