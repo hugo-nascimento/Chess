@@ -1,11 +1,44 @@
 ﻿using tabuleiro;
 using System;
 using Xadrez;
+using System.Collections.Generic;
 
 namespace xadrez_console
 {
     class Tela
     {
+        public static void ImprimirPartida(PartidaDeXadrez partida)
+        {
+            ImprimirTabuleiro(partida.tab);
+            Console.WriteLine();
+
+            ImprimirPecasCapturadas(partida);
+            Console.WriteLine();
+            Console.WriteLine("Turno: " + partida.turno);
+            Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+        }
+
+        public static void ImprimirPecasCapturadas(PartidaDeXadrez partida)
+        {
+            Console.WriteLine("Peças capturadas:");
+            Console.Write("Brancas: ");
+            ImprimirConjunto(partida.PecasCapturadas(Cor.Branca));
+            Console.Write("Pretas: ");
+            ConsoleColor aux = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            ImprimirConjunto(partida.PecasCapturadas(Cor.Preta));
+            Console.ForegroundColor = aux;
+        }
+
+        public static void ImprimirConjunto(HashSet<Peca> conjunto)
+        {
+            Console.Write("[");
+            foreach (Peca x in conjunto)
+            {
+                Console.Write(x + " ");
+            }
+            Console.WriteLine("]");
+        }
 
         public static void ImprimirTabuleiro(Tabuleiro tab)
         {
@@ -15,7 +48,6 @@ namespace xadrez_console
                 for (int j = 0; j < tab.colunas; j++)
                 {
                     ImprimirPeca(tab.peca(i, j));
-                    //Console.Write(" ");
                 }
                 Console.WriteLine();
             }
@@ -44,7 +76,6 @@ namespace xadrez_console
                     }
                     ImprimirPeca(tab.peca(i, j));
                     Console.BackgroundColor = fundoOriginal;
-                    //Console.Write(" ");
                 }
                 Console.WriteLine();
             }
